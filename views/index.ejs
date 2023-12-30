@@ -1,0 +1,57 @@
+<%- include("./parts/header") %>
+
+<nav class="navbar navbar-expand-lg bg-primary-subtle">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Customers</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Users
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Users</a></li>
+            <li><a class="dropdown-item" href="#">New user</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Manage user</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container mt-5">
+    <form action="/add/todo" method="POST" class="d-flex">
+        <input type="text" name="todo"  class="form-control" placeholder="Enter your todo">
+        <input type="submit" value="Add Todo"  class="btn btn-md btn-primary mx-2">
+    </form>
+
+    <ul class="list-group my-5" >
+        <% todo.forEach(ToDoApp =>{%>
+            <li class="list-group-item"><%= ToDoApp.todo %><a href="/delete/todo/<%= ToDoApp._id %>" class="btn btn-danger btn-sm" style="width: 170px;
+              position:absolute; right:0;" >Delete</a></li>
+       <% }) %>
+      </ul>
+  </div>
+
+  
+
+<%- include("./parts/footer") %>
